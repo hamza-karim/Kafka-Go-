@@ -15,3 +15,5 @@ sudo docker exec -it my-sevice sh
 ./main
 
 echo '{"SrcAddr":"192.168.1.1","DstAddr":"192.168.1.2","SrcPort":1234,"DstPort":5678,"InIf":1,"OutIf":2,"SrcMac":"01:23:45:67:89:ab","DstMac":"cd:ef:01:23:45:67"}' | \sudo docker-compose exec -T kafka kafka-console-producer --broker-list kafka:9092 --topic input-topic
+
+sudo docker-compose exec kafka kafka-console-consumer --bootstrap-server kafka:9092 --topic input-topic --from-beginning
