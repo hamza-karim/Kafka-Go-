@@ -102,3 +102,29 @@ updated goflow2 command (this command will enable kafka and send output in proto
 
 ./goflow2 -transport=kafka -transport.kafka.brokers=localhost:9092 -transport.kafka.topic=flows -format=pb -format.selector SrcAddr,DstAddr,SrcMac,DstMac,InIf,OutIf,SrcPort,DstPort,ObservationPointID,ObservationDomainID,SequenceNum,TimeFlowStart,TimeFlowEnd
 
+# running kagka-Go application 
+
+Download go version go1.20.2 linux/amd64 from official go websit
+
+download the main.go / Dockerfile / docker-compose.yml file
+
+make /var/lib/kafka/data writable
+
+type : go mod init <project name>
+          go get <project name> (these two command will build go.mod and go.sum files if those files are not included in your directory)
+
+type : sudo docker-compose build
+
+type : sudo docker-compose up
+
+sudo docker-compose exec kafka kafka-topics --zookeeper zookeeper:2181 --list (command to check available topics)
+
+sudo docker-compose exec kafka kafka-console-consumer --bootstrap-server kafka:9092 --topic output-topic --from-beginning (to print console)
+
+
+
+
+
+
+
+
